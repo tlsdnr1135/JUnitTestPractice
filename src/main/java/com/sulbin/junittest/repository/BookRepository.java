@@ -1,4 +1,7 @@
 package com.sulbin.junittest.repository;
 
-public interface BookRepository {
+import com.sulbin.junittest.domain.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<Book,Long> {
 }
