@@ -26,4 +26,10 @@ public class Book {
         this.title = title;
         this.author = author;
     }
+
+    //책 수정하기
+    public void update(String title, String author){
+        this.title = title;
+        this.author = author;
+    }
 }
