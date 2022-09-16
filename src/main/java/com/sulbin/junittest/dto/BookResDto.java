@@ -21,11 +21,11 @@ public class BookResDto {
         this.author = author;
     }
 
-    public BookResDto toDto(Book book){
-        this.id = book.getId();
-        this.title = book.getTitle();
-        this.author = book.getAuthor();
-        return this;
-    }
+//    public BookResDto toDto(Book book){
+//        this.id = book.getId();
+//        this.title = book.getTitle();
+//        this.author = book.getAuthor();
+//        return this;
+//    }
 
 }

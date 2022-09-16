@@ -87,7 +87,7 @@ public class BookRepositoryTest {
 
     }
 
-    // 4. 책 수정
+    // 4. 책 삭제
     @Test
     public void BookDelete_test(){
         //given
@@ -101,7 +101,7 @@ public class BookRepositoryTest {
         assertFalse(bookPS.isPresent());
     }
 
-    // 5. 책 삭제
+    // 5. 책 수정
     @Sql("classpath:db/tableInit.sql")
     @Test
     public void BookUpdate_test(){

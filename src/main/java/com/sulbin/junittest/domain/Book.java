@@ -1,5 +1,6 @@
 package com.sulbin.junittest.domain;
 
+import com.sulbin.junittest.dto.BookResDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,4 +33,13 @@ public class Book {
         this.title = title;
         this.author = author;
     }
+
+    public BookResDto toResDto(){
+        return BookResDto.builder()
+                .id(id)
+                .title(title)
+                .author(author)
+                .build();
+    }
+
 }
