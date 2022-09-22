@@ -1,4 +1,4 @@
-package com.sulbin.junittest.dto;
+package com.sulbin.junittest.dto.response;
 
 import com.sulbin.junittest.domain.Book;
 import lombok.Builder;

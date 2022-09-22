@@ -1,8 +1,9 @@
 package com.sulbin.junittest.service;
 
 import com.sulbin.junittest.domain.Book;
-import com.sulbin.junittest.dto.BookReqDto;
-import com.sulbin.junittest.dto.BookResDto;
+import com.sulbin.junittest.dto.request.BookReqDto;
+import com.sulbin.junittest.dto.response.BookListResDto;
+import com.sulbin.junittest.dto.response.BookResDto;
 import com.sulbin.junittest.repository.BookRepository;
 import com.sulbin.junittest.util.MailSender;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,9 @@ public class BookService {
     // 1. 책 등록
     @Transactional(rollbackFor = RuntimeException.class)
     public BookResDto bookSave(BookReqDto bookReqDto){
+        System.out.println("------------------------");
+        System.out.println(bookReqDto.getAuthor());
+        System.out.println("------------------------");
         Book bookPS = bookRepository.save(bookReqDto.toEntity());
         if(bookPS != null){
             if(!mailSender.send()){
@@ -34,10 +38,12 @@ public class BookService {
     }
 
     // 2. 책 목록 보기
-    public List<BookResDto> bookList(){
-        return bookRepository.findAll().stream()
+    public BookListResDto bookList(){
+        List<BookResDto> bookResDtos = bookRepository.findAll().stream()
                 .map(Book::toResDto)
                 .collect(Collectors.toList());
+        BookListResDto bookListResDto = BookListResDto.builder().bookLists(bookResDtos).build();
+        return bookListResDto;
     }
 
     // 3. 책 상세 보기

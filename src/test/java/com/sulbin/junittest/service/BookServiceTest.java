@@ -2,11 +2,11 @@ package com.sulbin.junittest.service;
 
 
 import com.sulbin.junittest.domain.Book;
-import com.sulbin.junittest.dto.BookReqDto;
-import com.sulbin.junittest.dto.BookResDto;
+import com.sulbin.junittest.dto.request.BookReqDto;
+import com.sulbin.junittest.dto.response.BookListResDto;
+import com.sulbin.junittest.dto.response.BookResDto;
 import com.sulbin.junittest.repository.BookRepository;
 import com.sulbin.junittest.util.MailSender;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static  org.assertj.core.api.WithAssertions.*;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -68,11 +67,11 @@ public class BookServiceTest {
         when(bookRepository.findAll()).thenReturn(books);
 
         //when
-        List<BookResDto> bookResDtos = bookService.bookList();
+        BookListResDto bookListResDto = bookService.bookList();
 
         //then
-        assertThat(bookResDtos.get(0).getTitle()).isEqualTo("oneTitle");
-        assertThat(bookResDtos.get(1).getTitle()).isEqualTo("twoTitle");
+        assertThat(bookListResDto.getDatas().get(0).getTitle()).isEqualTo("oneTitle");
+        assertThat(bookListResDto.getDatas().get(1).getTitle()).isEqualTo("twoTitle");
    }
 
     @DisplayName("책 한건 보기")
