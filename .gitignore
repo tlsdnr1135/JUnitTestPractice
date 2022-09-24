@@ -1,3 +1,5 @@
+src/main/resources/application-ignore.yml
+
 HELP.md
 .gradle
 build/
